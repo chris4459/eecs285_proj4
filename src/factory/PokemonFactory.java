@@ -11,7 +11,7 @@ public class PokemonFactory {
     
     switch ( name ) {
     case "Rattata":
-      return new Rattata(name, hp, attack, defense, speed, attackRange);
+      return new Rattata();
 
     default:
       throw new Exception();

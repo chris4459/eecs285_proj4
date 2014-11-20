@@ -12,18 +12,18 @@ public class MainFile {
   public static GameSimulatorGUI win;
   
   public static void main(String[] args) {
-    System.out.println("LETS START THIS");
-    Pokemon p = new Rattata("Rattata", 30, 56, 35, 72, 5);
+    System.out.println("-----Starting Pokemon Tower Defense Game-----");
+    Pokemon rattata = new Rattata();
     
-    win = new GameSimulatorGUI();
-    win.pack();
-    win.setSize(new Dimension(900, 750));
-    win.setVisible(true);
-    win.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    win.setResizable(false);
-    
-    
-    System.out.println(p);
+//    win = new GameSimulatorGUI();
+//    win.pack();
+//    win.setSize(new Dimension(900, 750));
+//    win.setVisible(true);
+//    win.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+//    win.setResizable(false);
+//    
+//    
+//    System.out.println(p);
     
   }
 }
