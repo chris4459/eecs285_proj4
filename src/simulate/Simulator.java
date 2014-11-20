@@ -20,6 +20,7 @@ import pokemon.Pokemon;
 
 public class Simulator {
   private static ArrayList< Pokemon > towerArrayList = new ArrayList<>();
+  private static int round = 0;
   private static int level = 0;
   private static Scanner in;
   private static Scanner lineScanner;
@@ -71,6 +72,7 @@ public class Simulator {
         //make sure it is an integer that is read
         try {
           level = in.nextInt(); 
+          round = in.nextInt();
         } catch (InputMismatchException e) {
           System.out.println("Cannot read this level as an integer ERROR");
         }
@@ -125,7 +127,7 @@ public class Simulator {
     try {
       BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
       
-      writer.write(String.format("%d", level));
+      writer.write(String.format("%d %d", level, round));
       writer.newLine();
       
       
