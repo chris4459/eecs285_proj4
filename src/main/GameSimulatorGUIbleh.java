@@ -4,7 +4,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
-public class GameSimulatorGUI extends JFrame{
+public class GameSimulatorGUIbleh extends JFrame{
 
   private JFrame frame;
 
@@ -15,7 +15,7 @@ public class GameSimulatorGUI extends JFrame{
     EventQueue.invokeLater(new Runnable() {
       public void run() {
         try {
-          GameSimulatorGUI window = new GameSimulatorGUI();
+          GameSimulatorGUIbleh window = new GameSimulatorGUIbleh();
           window.frame.setVisible(true);
         } catch (Exception e) {
           e.printStackTrace();
@@ -27,7 +27,7 @@ public class GameSimulatorGUI extends JFrame{
   /**
    * Create the application.
    */
-  public GameSimulatorGUI() {
+  public GameSimulatorGUIbleh() {
     initialize();
   }
 
