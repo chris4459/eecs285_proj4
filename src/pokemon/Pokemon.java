@@ -13,6 +13,7 @@ public abstract class Pokemon implements Cloneable{
   private final int defense;
   private final int speed;
   private final String name;
+  private final String type;
   private final double attackRange;
   private ImageIcon img;
   private String filePath;
@@ -20,10 +21,11 @@ public abstract class Pokemon implements Cloneable{
   
   // ---------------------------------------------------------------------------
   // Constructor
-  Pokemon(String name, int hp, int attack, int defense, int speed, 
+  Pokemon(String name, String type, int hp, int attack, int defense, int speed, 
       double attackRange)
   {
     this.name = name;
+    this.type = type;
     Pokemon.hp = hp;
     this.attack = attack;
     this.defense = defense;

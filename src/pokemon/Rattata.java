@@ -4,6 +4,6 @@ public class Rattata extends Pokemon implements Cloneable{
   
   
   public Rattata() {
-    super("Rattata", 30, 25, 35, 72, 5);
+    super("Rattata", "Normal", 30, 25, 35, 72, 5);
   }
 }
