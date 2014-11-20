@@ -49,8 +49,7 @@ public abstract class Pokemon implements Cloneable{
   /**
    * @return A cloned Pokemon if error is throw return null;
    */
-  public Object clone() throws CloneNotSupportedException
-  {
+  public Object clone() throws CloneNotSupportedException{
     return super.clone();
   }
 
@@ -58,6 +57,10 @@ public abstract class Pokemon implements Cloneable{
   
   public String getName() {
     return name;
+  }
+  
+  public String getType(){
+    return type;
   }
   
   public static int getHp() {
