@@ -6,8 +6,7 @@ import pokemon.Rattata;
 public class PokemonFactory {
   
   
-  public static Pokemon createPokemon(String name, int hp, int attack, 
-      int defense, int speed, double attackRange) throws Exception{
+  public static Pokemon createPokemon(String name) throws Exception{
     
     switch ( name ) {
     case "Rattata":

@@ -8,7 +8,7 @@ import factory.ImagePathFactory;
 
 public abstract class Pokemon implements Cloneable{
   //Variables
-  private static int hp;
+  private int hp;
   private final int attack;
   private final int defense;
   private final int speed;
@@ -26,7 +26,7 @@ public abstract class Pokemon implements Cloneable{
   {
     this.name = name;
     this.type = type;
-    Pokemon.hp = hp;
+    this.hp = hp;
     this.attack = attack;
     this.defense = defense;
     this.speed = speed;
@@ -63,7 +63,7 @@ public abstract class Pokemon implements Cloneable{
     return type;
   }
   
-  public static int getHp() {
+  public int getHp() {
     return hp;
   }
   
@@ -83,8 +83,8 @@ public abstract class Pokemon implements Cloneable{
     return attackRange;
   }
   
-  public static void setHp(int hp) {
-    Pokemon.hp = hp;
+  public void setHp(int hp) {
+    this.hp = hp;
   }
 
   @Override
@@ -92,7 +92,7 @@ public abstract class Pokemon implements Cloneable{
   {
     return String.format("Pokemon: %s \n\tHP: %d\n\tAttack: %d\n\t"
         + "Defense: %d\n\tAttack Range: %f", 
-        getName(), Pokemon.hp, getAttack(), getDefense(), getAttackRange());
+        getName(), getHp(), getAttack(), getDefense(), getAttackRange());
   }
 
 

@@ -5,8 +5,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
+import factory.PokemonFactory;
 import pokemon.Pokemon;
 
 /**
@@ -19,6 +21,8 @@ import pokemon.Pokemon;
 public class Simulator {
   private static ArrayList< Pokemon > towerArrayList = new ArrayList<>();
   private static int level = 0;
+  private static Scanner in;
+  private static Scanner lineScanner;
 
   // ---------------------------------------------------------------------------
   /**
@@ -40,11 +44,67 @@ public class Simulator {
   
   // ---------------------------------------------------------------------------
   
-  public static String[] loadState( File inputFile ){
+  
+  /**
+   * loadState opens a file and loads the info needed to start a game from a 
+   * specific state. 
+   * First loads the level
+   * Second it reads in the pokemon and its stats
+   * 
+   * Format must be as follows
+   *    Int
+   *    String(valid pokemon name) String(valid type) Int Int Int Int Double 
+   * 
+   * @param inputFile
+   * @return
+   */
+  public static void loadState( File inputFile ){
     if (inputFile == null) {
-      return null;
+      return ;
     }
-    else return null;
+    ArrayList< Pokemon > towerArrayList = new ArrayList<>();
+    try {
+      in = new Scanner(inputFile);
+      
+      //read in the level
+      if (in.hasNextLine()) {
+        //make sure it is an integer that is read
+        try {
+          level = in.nextInt(); 
+        } catch (InputMismatchException e) {
+          System.out.println("Cannot read this level as an integer ERROR");
+        }
+      }
+      while (in.hasNextLine()) {
+        try {
+          String line = in.nextLine();
+          lineScanner = new Scanner(line);
+          
+          String name = lineScanner.next();
+          String type = lineScanner.next();
+          int hp = Integer.parseInt(lineScanner.next());
+          int attack = Integer.parseInt(lineScanner.next());
+          int defense = Integer.parseInt(lineScanner.next());
+          int speed = Integer.parseInt(lineScanner.next()); 
+          double attackRange = Double.parseDouble(lineScanner.next());
+          
+          Pokemon pokemon = PokemonFactory.createPokemon(name);
+          Simulator.add(pokemon);
+          
+        } catch (Exception e) {
+          // TODO: handle exception
+        }
+      }
+      
+      
+      
+      
+      
+    } catch (Exception e) {
+      // TODO: handle exception
+    }
+    
+    
   }
   
   
@@ -65,7 +125,7 @@ public class Simulator {
     try {
       BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
       
-      writer.write(String.format("Level: %d", level));
+      writer.write(String.format("%d", level));
       writer.newLine();
       
       
