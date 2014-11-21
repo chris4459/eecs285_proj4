@@ -1,7 +1,6 @@
 package main;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,7 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JRadioButtonMenuItem;
 
 import exceptions.ImagePathException;
 import factory.ImagePathFactory;
@@ -82,6 +80,7 @@ public class NewGameGUI extends JFrame implements ActionListener{
     picture = new JLabel(createImageIcon(imagePath));
     
     centerPanel.add(picture);
+    
     
     /*========================== Bottom Panel  =============================*/
     /*======================================================================*/
@@ -181,9 +180,10 @@ public class NewGameGUI extends JFrame implements ActionListener{
   
   
   private ImageIcon createImageIcon(String path) {
+    System.out.println(path);
     return new ImageIcon(getClass().getClassLoader().getResource(path));
+
+  
   }
-  
-  
   
 }

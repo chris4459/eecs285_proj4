@@ -26,13 +26,13 @@ public class ImagePathFactory
     {
       
       case "Bulbasaur":
-        return "images/bulbasaur.png";
+        return "images/bulbasaurIcon.gif";
       case "Charmander":
-        return "images/charmander.png";
+        return "images/charmanderIcon.gif";
       case "Squirtle":
-        return "images/squirtle.png";
+        return "images/squirtleIcon.gif";
       case "Pikachu":
-        return "images/pikachu.png";
+        return "images/pikachuIcon.gif";
       case "Caterpie":
         return "images/caterpie.png";
       case "Pidgey":
