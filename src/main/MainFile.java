@@ -46,7 +46,6 @@ public class MainFile {
     win.setResizable(false);
 //    
 //    
-//    System.out.println(p);
     
   }
 }

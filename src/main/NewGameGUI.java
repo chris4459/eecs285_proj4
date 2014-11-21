@@ -76,7 +76,7 @@ public class NewGameGUI extends JFrame implements ActionListener{
     centerPanel.add(pikachuButton);
     
     //set initial picture to bulbasaur    
-    setImagePath("Bulbasaur");
+    setImagePath("BulbasaurIcon");
     picture = new JLabel(createImageIcon(imagePath));
     
     centerPanel.add(picture);
@@ -140,19 +140,21 @@ public class NewGameGUI extends JFrame implements ActionListener{
   @Override
   public void actionPerformed(ActionEvent e) {
     if (e.getSource() == bulbasaurButton) {
-      setImagePath("Bulbasaur");
+      
+      
+      setImagePath("BulbasaurIcon");
       picture.setIcon(createImageIcon(imagePath));
     }
     else if (e.getSource() == charmanderButton) {
-      setImagePath("Charmander");
+      setImagePath("CharmanderIcon");
       picture.setIcon(createImageIcon(imagePath));      
     }
     else if (e.getSource() == squirtleButton) {
-      setImagePath("Squirtle");
+      setImagePath("SquirtleIcon");
       picture.setIcon(createImageIcon(imagePath)); 
     }
     else if (e.getSource() == pikachuButton) {
-      setImagePath("Pikachu");
+      setImagePath("PikachuIcon");
       picture.setIcon(createImageIcon(imagePath)); 
     }
   }
@@ -180,7 +182,7 @@ public class NewGameGUI extends JFrame implements ActionListener{
   
   
   private ImageIcon createImageIcon(String path) {
-    System.out.println(path);
+//    System.out.println(path);
     return new ImageIcon(getClass().getClassLoader().getResource(path));
   }
   

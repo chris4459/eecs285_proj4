@@ -28,6 +28,7 @@ import pokemon.Pokemon;
 import simulate.Simulator;
 import exceptions.ImagePathException;
 import factory.ImagePathFactory;
+import listeners.ListListener;
 import listeners.MenuItemListener;
 
 public class GameSimulatorGUI extends JFrame{
@@ -158,6 +159,7 @@ public class GameSimulatorGUI extends JFrame{
     towerList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     towerList.setSelectedIndex(0);
     towerList.setVisibleRowCount(6);
+    towerList.addMouseListener(new ListListener());
     JScrollPane towerListScrollPane = new JScrollPane(towerList);
     
     towerListPanel.add(towerListScrollPane);
@@ -206,7 +208,7 @@ public class GameSimulatorGUI extends JFrame{
   
   
   private ImageIcon createImageIcon(String path) {
-    System.out.println(path);
+//    System.out.println(path);
     return new ImageIcon(getClass().getClassLoader().getResource(path));
   }
   

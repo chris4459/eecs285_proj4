@@ -24,14 +24,21 @@ public class ImagePathFactory
   {
     switch ( name )
     {
-      
       case "Bulbasaur":
+        return "images/bulbasaur.png";
+      case "BulbasaurIcon":
         return "images/bulbasaurIcon.gif";
       case "Charmander":
+        return "images/charmander.png";
+      case "CharmanderIcon":
         return "images/charmanderIcon.gif";
       case "Squirtle":
+        return "images/squirtle.png";
+      case "SquirtleIcon":
         return "images/squirtleIcon.gif";
       case "Pikachu":
+        return "images/pikachu.png";
+      case "PikachuIcon":
         return "images/pikachuIcon.gif";
       case "Caterpie":
         return "images/caterpie.png";
@@ -48,5 +55,9 @@ public class ImagePathFactory
     }
   }
  
+  // ---------------------------------------------------------------------------
+  
+
+  
   // ---------------------------------------------------------------------------
 }

@@ -15,9 +15,8 @@ public abstract class Pokemon implements Cloneable{
   private final String name;
   private final String type;
   private final double attackRange;
-  private ImageIcon img;
-  private String filePath;
-  private JLabel imgLabel;
+  private String imagePath;
+  private JLabel picture;
   
   // ---------------------------------------------------------------------------
   // Constructor
@@ -32,16 +31,11 @@ public abstract class Pokemon implements Cloneable{
     this.speed = speed;
     this.attackRange = attackRange;
     
-    try {
-      filePath = ImagePathFactory.createImagePath(name);
-//      System.out.println("Filepath: " + filePath);
-    } catch (ImagePathException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
-    img = new ImageIcon(getClass().getClassLoader().getResource(filePath));
-    imgLabel = new JLabel();
-    imgLabel.setIcon(img);
+    setImagePath(this.name);
+    
+    
+    
+    picture = new JLabel(createImageIcon(imagePath));
     
   }
   //---------------------------------------------------------------------------
@@ -86,6 +80,14 @@ public abstract class Pokemon implements Cloneable{
   public void setHp(int hp) {
     this.hp = hp;
   }
+  
+  /**
+   * Returns the JLabel of the picture for the pokemon
+   * @return JLabel 
+   */
+  public JLabel getPicture() {
+    return picture;
+  }
 
   @Override
   public String toString()
@@ -93,6 +95,28 @@ public abstract class Pokemon implements Cloneable{
     return String.format("Pokemon: %s \n\tHP: %d\n\tAttack: %d\n\t"
         + "Defense: %d\n\tAttack Range: %f", 
         getName(), getHp(), getAttack(), getDefense(), getAttackRange());
+  }
+  
+  /**
+   * Set the image Path
+   * @param str
+   */
+  private void setImagePath(String str){
+    try {
+      imagePath = ImagePathFactory.createImagePath(str);
+    } catch (ImagePathException e) {
+      e.printStackTrace();
+    }
+  }
+  
+  /**
+   * Creates the image icon and returns it
+   * @param path
+   * @return
+   */
+  private ImageIcon createImageIcon(String path) {
+//    System.out.println(path);
+    return new ImageIcon(getClass().getClassLoader().getResource(path));
   }
 
 
