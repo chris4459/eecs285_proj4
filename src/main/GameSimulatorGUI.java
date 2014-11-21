@@ -19,6 +19,7 @@ public class GameSimulatorGUI extends JFrame{
   private static JMenuBar menuBar;
   private static JMenu fileMenu;
   static JMenuItem startNewGameItem;
+  static JMenuItem saveStateItem;
   static JMenuItem loadStateItem;
   static JMenuItem exitGameItem;
   
@@ -43,6 +44,8 @@ public class GameSimulatorGUI extends JFrame{
     fileMenu = new JMenu("File");
     startNewGameItem = new JMenuItem("Start New Game");
     startNewGameItem.addActionListener(new MenuItemListener());
+    saveStateItem = new JMenuItem("Save State");
+    saveStateItem.addActionListener(new MenuItemListener());
     loadStateItem = new JMenuItem("Load State");
     loadStateItem.addActionListener(new MenuItemListener());
     exitGameItem = new JMenuItem("Exit Game");
@@ -50,6 +53,7 @@ public class GameSimulatorGUI extends JFrame{
     
     //Add items to Menu
     fileMenu.add(startNewGameItem);
+    fileMenu.add(saveStateItem);
     fileMenu.add(loadStateItem);
     fileMenu.add(exitGameItem);
     
@@ -69,6 +73,10 @@ public class GameSimulatorGUI extends JFrame{
 
   public static JMenuItem getStartNewGameItem() {
     return startNewGameItem;
+  }
+  
+  public static JMenuItem getSaveStateItem() {
+    return saveStateItem;
   }
   
   public static JMenuItem getLoadStateItem() {

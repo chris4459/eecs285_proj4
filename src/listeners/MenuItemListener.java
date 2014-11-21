@@ -13,11 +13,14 @@ public class MenuItemListener implements ActionListener{
     if (e.getSource() == GameSimulatorGUI.getStartNewGameItem()) {
       NewGameGUI newGameWin = new NewGameGUI();
     }
+    else if(e.getSource() == GameSimulatorGUI.getSaveStateItem()){
+      
+    }
     else if(e.getSource() == GameSimulatorGUI.getLoadStateItem()){
       
     }
     else if(e.getSource() == GameSimulatorGUI.getExitGameItem()){
-      
+      System.exit(0);
     }
   }
 }
