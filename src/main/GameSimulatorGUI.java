@@ -2,17 +2,30 @@ package main;
 
 import java.awt.BorderLayout;
 import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
+import javax.swing.ListSelectionModel;
 
+import pokemon.Pokemon;
+import simulate.Simulator;
 import exceptions.ImagePathException;
 import factory.ImagePathFactory;
 import listeners.MenuItemListener;
@@ -36,10 +49,16 @@ public class GameSimulatorGUI extends JFrame{
   private static JButton resumeButton;
   private static JButton resetButton;
   
+  //Control Score GUI
+  private static JTextField scoreTextField, moneyTextField, livesTextField;
+  private static JLabel scoreLabel, moneyLabel, livesLabel;
+  private static JPanel controlPanel, infoPanel, towerListPanel;
+  private static JList<String> towerList;
+  private static JSplitPane towerSplitPane;
+  
   
   
   private static JPanel center, towerPanel, towerPanelTop, towerPanelBottom;
-  private static JLabel money_label, lives_label;
   private static JButton bulbTower, pikaTower, charTower, squirtTower;
   private static ImageIcon bulbIcon, pikaIcon, charIcon, squirtIcon;
   private static Cursor cursor;
@@ -85,7 +104,7 @@ public class GameSimulatorGUI extends JFrame{
     //Game image
     setImagePath("Route 1");
     background_label = new JLabel(createImageIcon(imagePath));
-    gamePanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 20, 0));
+    gamePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 20, 0));
     
     //Game Buttons
     startButton = new JButton("Start Game");
@@ -106,8 +125,50 @@ public class GameSimulatorGUI extends JFrame{
     
     /*======================= Control Screen GUI ===========================*/
     /*======================================================================*/
+    controlPanel = new JPanel();
+    controlPanel.setLayout(new BoxLayout(controlPanel, BoxLayout.Y_AXIS));
+    infoPanel = new JPanel();
+    infoPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+    
+    livesLabel = new JLabel("Lives:");
+    livesTextField = new JTextField("??",4);
+    livesTextField.setEditable(false);
+    
+    scoreLabel = new JLabel("Score:");
+    scoreTextField = new JTextField("0",6);
+    scoreTextField.setEditable(false);
+    
+    moneyLabel = new JLabel("Money:");
+    moneyTextField = new JTextField("$0",6);
+    moneyTextField.setEditable(false);
+    
+    infoPanel.add(livesLabel);
+    infoPanel.add(livesTextField);
+    infoPanel.add(scoreLabel);
+    infoPanel.add(scoreTextField);
+    infoPanel.add(moneyLabel);
+    infoPanel.add(moneyTextField);
+    
+
     
     
+    towerListPanel = new JPanel();
+    
+    towerList = new JList<>(Simulator.getTowerVectorInString());
+    towerList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    towerList.setSelectedIndex(0);
+    towerList.setVisibleRowCount(6);
+    JScrollPane towerListScrollPane = new JScrollPane(towerList);
+    
+    towerListPanel.add(towerListScrollPane);
+    
+    
+    
+    
+    controlPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+    controlPanel.add(infoPanel);
+    controlPanel.add(Box.createRigidArea(new Dimension(0, 30)));
+    controlPanel.add(towerListPanel);
     
     
     
@@ -115,7 +176,7 @@ public class GameSimulatorGUI extends JFrame{
     /*======================================================================*/
     
     this.add("West", gamePanel);
-    
+    this.add("East", controlPanel);
   }
 
 

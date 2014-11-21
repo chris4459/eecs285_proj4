@@ -4,9 +4,9 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.Vector;
 
 import factory.PokemonFactory;
 import pokemon.Pokemon;
@@ -19,7 +19,7 @@ import pokemon.Pokemon;
 
 
 public class Simulator {
-  private static ArrayList< Pokemon > towerArrayList = new ArrayList<>();
+  private static Vector< Pokemon > towerVector = new Vector<>();
   private static int round = 0;
   private static int level = 0;
   private static Scanner in;
@@ -27,23 +27,33 @@ public class Simulator {
 
   // ---------------------------------------------------------------------------
   /**
-   * Adds a pokemon to the towerArrayList;
+   * Adds a pokemon to the towerVector;
    */
   public static void add( final Pokemon pokemon){
-    towerArrayList.add(pokemon);
+    towerVector.add(pokemon);
   }
   
   // ---------------------------------------------------------------------------
   
   /**
-   * 
-   * @return An array of tower pokemons from the towerArrayList.
+   * @return An array of tower pokemons from the towerVector.
    */
-  public static Pokemon[] getTowerArray(){
-    return towerArrayList.toArray(new Pokemon[towerArrayList.size()]);
+  public static Vector<Pokemon> getTowerVector(){
+    return towerVector;
   }
   
   // ---------------------------------------------------------------------------
+  
+  public static Vector<String> getTowerVectorInString(){
+    Vector<String> stringVec = new Vector<>();
+    for (Pokemon pokemon : towerVector) {
+      stringVec.add(pokemon.getName());
+    }
+    return stringVec;
+  }
+  
+  
+//---------------------------------------------------------------------------
   
   
   /**
@@ -63,7 +73,7 @@ public class Simulator {
     if (inputFile == null) {
       return ;
     }
-    ArrayList< Pokemon > towerArrayList = new ArrayList<>();
+    Vector< Pokemon > towerVector = new Vector<>();
     try {
       in = new Scanner(inputFile);
       
@@ -115,7 +125,7 @@ public class Simulator {
   /**
    * Saves the state of the game.
    *    Needs to save:
-   *        - towerArrayList
+   *        - towerVector
    *        - level
    * @param outputFile
    * @throws IOException
@@ -131,7 +141,7 @@ public class Simulator {
       writer.newLine();
       
       
-      for (Pokemon pokemon : towerArrayList) {
+      for (Pokemon pokemon : towerVector) {
         String name = pokemon.getName();
         String type = pokemon.getType();
         String hp = Integer.toString(pokemon.getHp());
