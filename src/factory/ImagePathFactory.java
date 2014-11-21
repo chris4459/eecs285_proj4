@@ -1,5 +1,7 @@
 package factory;
 
+import javax.swing.ImageIcon;
+
 import exceptions.ImagePathException;
 
 /**
@@ -43,6 +45,6 @@ public class ImagePathFactory
         throw new ImagePathException();
     }
   }
-
+ 
   // ---------------------------------------------------------------------------
 }

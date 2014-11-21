@@ -34,7 +34,7 @@ public abstract class Pokemon implements Cloneable{
     
     try {
       filePath = ImagePathFactory.createImagePath(name);
-      System.out.println("Filepath: " + filePath);
+//      System.out.println("Filepath: " + filePath);
     } catch (ImagePathException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
