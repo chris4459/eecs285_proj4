@@ -19,7 +19,7 @@ public class MainFile {
     win = new GameSimulatorGUI();
     win.setVisible(true);
     win.pack();
-    win.setSize(750, 600);
+    win.setSize(850, 700);
     win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //    win.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     win.setResizable(false);

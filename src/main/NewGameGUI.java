@@ -182,8 +182,6 @@ public class NewGameGUI extends JFrame implements ActionListener{
   private ImageIcon createImageIcon(String path) {
     System.out.println(path);
     return new ImageIcon(getClass().getClassLoader().getResource(path));
-
-  
   }
   
 }
