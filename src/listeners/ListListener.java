@@ -31,7 +31,7 @@ public class ListListener extends MouseAdapter {
       }
       
       pokemonInfoWin = new PokemonInfoGUI(pokemonToShow);
-      pokemonInfoWin.setMinimumSize(new Dimension(600, 400));
+      pokemonInfoWin.setMinimumSize(new Dimension(500, 300));
       pokemonInfoWin.pack();
       pokemonInfoWin.setVisible(true);
       pokemonInfoWin.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

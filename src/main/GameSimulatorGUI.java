@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.TextField;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -23,6 +24,7 @@ import javax.swing.JSplitPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.border.EmptyBorder;
 
 import pokemon.Pokemon;
 import simulate.Simulator;
@@ -42,13 +44,12 @@ public class GameSimulatorGUI extends JFrame{
   static JMenuItem exitGameItem;
   
   //Game Screen GUI
-  private static JLabel background_label;
+  private static JLabel backgroundLabel;
   private String imagePath;
-  private static JPanel gamePanel, gameButtonPanel;
-  private static JButton startButton;
-  private static JButton pauseButton;
-  private static JButton resumeButton;
-  private static JButton resetButton;
+  private static JPanel gamePanel, gameButtonPanel, gameNorthPanel;
+  private static JButton startButton, pauseButton, resumeButton, resetButton;
+  private static JLabel roundLabel, levelLabel;
+  private static JTextField roundTextField, levelTextField;
   
   //Control Score GUI
   private static JTextField scoreTextField, moneyTextField, livesTextField;
@@ -56,6 +57,7 @@ public class GameSimulatorGUI extends JFrame{
   private static JPanel controlPanel, infoPanel, towerListPanel;
   private static JList<String> towerList;
   private static JSplitPane towerSplitPane;
+  private static JLabel pictureLabel;
   
   
   
@@ -99,13 +101,29 @@ public class GameSimulatorGUI extends JFrame{
     
     /*======================= Game Screen GUI ==============================*/
     /*======================================================================*/
+    
+    
     gamePanel = new JPanel(new BorderLayout());
     gameButtonPanel = new JPanel();
+    gameNorthPanel = new JPanel();
+    
+    //Rounds and level
+    roundLabel = new JLabel("Round:");
+    roundTextField = new JTextField("0", 4);
+    roundTextField.setEditable(false);
+    levelLabel = new JLabel("Level:");
+    levelTextField = new JTextField("0", 4);
+    levelTextField.setEditable(false);
+    gameNorthPanel.add(roundLabel);
+    gameNorthPanel.add(roundTextField);
+    gameNorthPanel.add(levelLabel);
+    gameNorthPanel.add(levelTextField);
+    
     
     //Game image
     setImagePath("Route 1");
-    background_label = new JLabel(createImageIcon(imagePath));
-    gamePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 20, 0));
+    backgroundLabel = new JLabel(createImageIcon(imagePath));
+    gamePanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 20, 0));
     
     //Game Buttons
     startButton = new JButton("Start Game");
@@ -120,7 +138,8 @@ public class GameSimulatorGUI extends JFrame{
     gameButtonPanel.add(resumeButton);
     gameButtonPanel.add(resetButton);
     
-    gamePanel.add("Center", background_label);
+    gamePanel.add("North", gameNorthPanel);
+    gamePanel.add("Center", backgroundLabel);
     gamePanel.add("South", gameButtonPanel);
     
     
@@ -152,25 +171,37 @@ public class GameSimulatorGUI extends JFrame{
     
 
     
-    
+    //list
     towerListPanel = new JPanel();
     
     towerList = new JList<>(Simulator.getTowerVectorInString());
     towerList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     towerList.setSelectedIndex(0);
-    towerList.setVisibleRowCount(6);
+    towerList.setVisibleRowCount(20);
     towerList.addMouseListener(new ListListener());
     JScrollPane towerListScrollPane = new JScrollPane(towerList);
-    
+    towerListScrollPane.setPreferredSize(new Dimension(350,200));
     towerListPanel.add(towerListScrollPane);
     
+    //picture for list
+    setImagePath("Bulbasaur");
+    pictureLabel = new JLabel(createImageIcon(imagePath));
+    
+    
+    towerSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, 
+        towerListPanel, pictureLabel);
+    towerSplitPane.setPreferredSize(new Dimension(350, 500));
+    towerSplitPane.setEnabled(false);
+    towerSplitPane.setBorder(new EmptyBorder(30, 0, 20, 0));
     
     
     
     controlPanel.add(Box.createRigidArea(new Dimension(0, 10)));
     controlPanel.add(infoPanel);
-    controlPanel.add(Box.createRigidArea(new Dimension(0, 30)));
-    controlPanel.add(towerListPanel);
+//    controlPanel.add(Box.createRigidArea(new Dimension(0, 0)));
+    controlPanel.add(towerSplitPane);
+    
+    
     
     
     
