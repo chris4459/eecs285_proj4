@@ -52,8 +52,11 @@ public class Simulator {
     return stringVec;
   }
   
-  
 //---------------------------------------------------------------------------
+  
+  public static Pokemon towerAtIndex(int index){
+    return towerVector.get(index);
+  }
   
   
   /**

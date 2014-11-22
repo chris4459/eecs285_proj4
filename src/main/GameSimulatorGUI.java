@@ -31,6 +31,7 @@ import simulate.Simulator;
 import exceptions.ImagePathException;
 import factory.ImagePathFactory;
 import listeners.ListListener;
+import listeners.ListSelectListener;
 import listeners.MenuItemListener;
 
 public class GameSimulatorGUI extends JFrame{
@@ -57,7 +58,7 @@ public class GameSimulatorGUI extends JFrame{
   private static JPanel controlPanel, infoPanel, towerListPanel;
   private static JList<String> towerList;
   private static JSplitPane towerSplitPane;
-  private static JLabel pictureLabel;
+  public static JLabel pictureLabel;
   
   
   
@@ -148,7 +149,7 @@ public class GameSimulatorGUI extends JFrame{
     controlPanel = new JPanel();
     controlPanel.setLayout(new BoxLayout(controlPanel, BoxLayout.Y_AXIS));
     infoPanel = new JPanel();
-    infoPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+    infoPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
     
     livesLabel = new JLabel("Lives:");
     livesTextField = new JTextField("??",4);
@@ -179,6 +180,7 @@ public class GameSimulatorGUI extends JFrame{
     towerList.setSelectedIndex(0);
     towerList.setVisibleRowCount(20);
     towerList.addMouseListener(new ListListener());
+    towerList.addListSelectionListener(new ListSelectListener());
     JScrollPane towerListScrollPane = new JScrollPane(towerList);
     towerListScrollPane.setPreferredSize(new Dimension(350,200));
     towerListPanel.add(towerListScrollPane);
