@@ -170,7 +170,6 @@ public class GameSimulatorGUI extends JFrame{
     infoPanel.add(moneyLabel);
     infoPanel.add(moneyTextField);
     
-
     
     //list
     towerListPanel = new JPanel();

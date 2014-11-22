@@ -8,6 +8,9 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Vector;
 
+import javax.swing.JOptionPane;
+
+import main.MainFile;
 import factory.PokemonFactory;
 import pokemon.Pokemon;
 
@@ -160,6 +163,9 @@ public class Simulator {
       
       writer.flush();
       writer.close();
+      
+      JOptionPane.showMessageDialog(MainFile.win, "Successfully saved state", 
+          "State Saved", JOptionPane.PLAIN_MESSAGE);
       
     } catch (IOException e) {
       throw new IOException(
