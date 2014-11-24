@@ -12,6 +12,7 @@ import javax.swing.JFileChooser;
 
 import pokemon.Pokemon;
 import simulate.Simulator;
+import main.BuyTowerGUI;
 import main.GameSimulatorGUI;
 import main.MainFile;
 import main.NewGameGUI;
@@ -73,5 +74,9 @@ public class MenuItemListener implements ActionListener{
     else if(e.getSource() == GameSimulatorGUI.getExitGameItem()){
       System.exit(0);
     }
+    else if(e.getSource() == GameSimulatorGUI.getBuyTowerItem()){
+      BuyTowerGUI buyTowerGUI = new BuyTowerGUI();
+    }
+    
   }
 }

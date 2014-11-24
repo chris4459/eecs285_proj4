@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.TextField;
 
 import javax.swing.BorderFactory;
@@ -14,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JList;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -40,13 +42,17 @@ public class GameSimulatorGUI extends JFrame{
   //Menu Bar GUI
   private static JMenuBar menuBar;
   private static JMenu fileMenu;
+  private static JMenu editMenu;
   static JMenuItem startNewGameItem;
   static JMenuItem saveStateItem;
   static JMenuItem loadStateItem;
   static JMenuItem exitGameItem;
+  static JMenuItem buyTowerItem;
   
   //Game Screen GUI
+  private static JLayeredPane backgroundLayeredPane;
   private static JLabel backgroundLabel;
+  private static JPanel imagePanel, gridPanel;
   private String imagePath;
   private static JPanel gamePanel, gameButtonPanel, gameNorthPanel;
   private static JButton startButton, pauseButton, resumeButton, resetButton;
@@ -84,14 +90,22 @@ public class GameSimulatorGUI extends JFrame{
     exitGameItem = new JMenuItem("Exit Game");
     exitGameItem.addActionListener(new MenuItemListener());
     
+    editMenu = new JMenu("Edit");
+    buyTowerItem = new JMenuItem("Buy Tower");
+    buyTowerItem.addActionListener(new MenuItemListener());
+    
     //Add items to Menu
     fileMenu.add(startNewGameItem);
     fileMenu.add(saveStateItem);
     fileMenu.add(loadStateItem);
     fileMenu.add(exitGameItem);
     
+    //Add items to Edit
+    editMenu.add(buyTowerItem);
+    
     //Add menu to menuBar
     menuBar.add(fileMenu);
+    menuBar.add(editMenu);
     
     //Add menuBar to Jframe
     this.setJMenuBar(menuBar);
@@ -117,10 +131,34 @@ public class GameSimulatorGUI extends JFrame{
     gameNorthPanel.add(roundLabel);
     gameNorthPanel.add(roundTextField);
     
-    //Game image
+    //Game image and layered pane
+    backgroundLayeredPane = new JLayeredPane();
     setImagePath("Route 1");
-    backgroundLabel = new JLabel(createImageIcon(imagePath));
+    ImageIcon image = createImageIcon(imagePath);
+//    backgroundLabel = new JLabel(image);
+    backgroundLabel = new JLabel(image);
     gamePanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 20, 0));
+    
+    Dimension imageDimension = 
+        new Dimension(image.getIconWidth(), image.getIconHeight());
+    
+    backgroundLayeredPane.setPreferredSize(imageDimension);
+    backgroundLabel.add(backgroundLabel, new Integer(50));
+//    imagePanel = new JPanel();
+//    imagePanel.add(backgroundLabel);
+    
+//    gridPanel = new JPanel();
+//    gridPanel.setLayout(new GridLayout(10, 10));
+//    gridPanel.setSize(imageDimension);
+    
+//    backgroundLabel.setPreferredSize(imageDimension);
+    
+//    backgroundLayeredPane.add(backgroundLabel, 1); //add to second layer
+//    backgroundLayeredPane.add(gridPanel, 0);
+    
+    
+    System.out.println("Image height: " + image.getIconHeight());
+    System.out.println("Image width: " + image.getIconWidth());
     
     //Game Buttons
     startButton = new JButton("Start Game");
@@ -140,7 +178,7 @@ public class GameSimulatorGUI extends JFrame{
     gameButtonPanel.add(resetButton);
     
     gamePanel.add("North", gameNorthPanel);
-    gamePanel.add("Center", backgroundLabel);
+    gamePanel.add("Center", backgroundLayeredPane);
     gamePanel.add("South", gameButtonPanel);
     
     /*======================================================================*/
@@ -248,6 +286,14 @@ public class GameSimulatorGUI extends JFrame{
    */
   public static JMenuItem getExitGameItem() {
     return exitGameItem;
+  }
+  
+  /**
+   * For the edit menu in menu bar
+   *    - Buy Tower -
+   */
+  public static JMenuItem getBuyTowerItem(){
+    return buyTowerItem;
   }
   
   /**
