@@ -121,7 +121,6 @@ public class Simulator {
           pokemon = PokemonFactory.createPokemon(name);
           Simulator.add(pokemon);
           
-          
         } catch (Exception e) {
           // TODO: handle exception
         }

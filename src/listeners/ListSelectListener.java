@@ -26,14 +26,14 @@ public class ListSelectListener implements ListSelectionListener{
     }
     JList<String> theList = (JList<String>)e.getSource();
     if (theList.isSelectionEmpty()) {
-      
+      setImagePath("Default");
+      GameSimulatorGUI.pictureLabel.setIcon(createImageIcon(imagePath));
     }
     else{
       int index = theList.getSelectedIndex();
       setImagePath(Simulator.towerAtIndex(index).getName());
       GameSimulatorGUI.pictureLabel.setIcon(createImageIcon(imagePath));
     }
-    
   }
   
   private void setImagePath(String str){

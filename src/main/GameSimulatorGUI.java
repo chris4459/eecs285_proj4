@@ -30,6 +30,7 @@ import pokemon.Pokemon;
 import simulate.Simulator;
 import exceptions.ImagePathException;
 import factory.ImagePathFactory;
+import listeners.ButtonListener;
 import listeners.ListListener;
 import listeners.ListSelectListener;
 import listeners.MenuItemListener;
@@ -68,6 +69,7 @@ public class GameSimulatorGUI extends JFrame{
     super("Pokemon Tower Defense");
     this.setLayout(new BorderLayout());
     
+    /*======================================================================*/
     /*============================== Menu Bar ==============================*/
     /*======================================================================*/
     menuBar = new JMenuBar();
@@ -94,7 +96,7 @@ public class GameSimulatorGUI extends JFrame{
     //Add menuBar to Jframe
     this.setJMenuBar(menuBar);
     
-    
+    /*======================================================================*/
     /*======================= Game Screen GUI ==============================*/
     /*======================================================================*/
     
@@ -122,11 +124,15 @@ public class GameSimulatorGUI extends JFrame{
     
     //Game Buttons
     startButton = new JButton("Start Game");
+    startButton.addActionListener(new ButtonListener());
     pauseButton = new JButton("Pause Game");
+    pauseButton.addActionListener(new ButtonListener());
     pauseButton.setEnabled(false);
     resumeButton = new JButton("Resume Game");
+    resumeButton.addActionListener(new ButtonListener());
     resumeButton.setEnabled(false);
     resetButton = new JButton("Reset");
+    resetButton.addActionListener(new ButtonListener());
     
     gameButtonPanel.add(startButton);
     gameButtonPanel.add(pauseButton);
@@ -137,7 +143,7 @@ public class GameSimulatorGUI extends JFrame{
     gamePanel.add("Center", backgroundLabel);
     gamePanel.add("South", gameButtonPanel);
     
-    
+    /*======================================================================*/
     /*======================= Control Screen GUI ===========================*/
     /*======================================================================*/
     controlPanel = new JPanel();
@@ -196,6 +202,7 @@ public class GameSimulatorGUI extends JFrame{
 //    controlPanel.add(Box.createRigidArea(new Dimension(0, 0)));
     controlPanel.add(towerSplitPane);
     
+    /*======================================================================*/
     /*============================ Main Screen =============================*/
     /*======================================================================*/
     
@@ -323,6 +330,38 @@ public class GameSimulatorGUI extends JFrame{
    */
   public static int getMoney(){
     return Integer.parseInt(moneyTextField.getText());
+  }
+  
+  /**
+   * Needed for the ButtonListener
+   * @return
+   */
+  public static JButton getStartButton(){
+    return startButton;
+  }
+  
+  /**
+   * Needed for the ButtonListener
+   * @return
+   */
+  public static JButton getPauseButton(){
+    return pauseButton;
+  }
+  
+  /**
+   * Needed for the ButtonListener
+   * @return
+   */
+  public static JButton getResumeButton(){
+    return resumeButton;
+  }
+  
+  /**
+   * Needed for the ButtonListener
+   * @return
+   */
+  public static JButton getResetButton(){
+    return resetButton;
   }
   
   
