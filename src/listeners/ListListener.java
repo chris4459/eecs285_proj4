@@ -19,6 +19,7 @@ public class ListListener extends MouseAdapter {
   public void mouseClicked(MouseEvent e) {
     JList<String> list = (JList<String>)e.getSource();
     
+    //when double clicking a list to getpokemon info
     if (e.getClickCount() == 2) {
       String pokemonString = list.getSelectedValue();
       
@@ -30,13 +31,18 @@ public class ListListener extends MouseAdapter {
         }
       }
       
-      pokemonInfoWin = new PokemonInfoGUI(pokemonToShow);
-      pokemonInfoWin.setMinimumSize(new Dimension(500, 300));
-      pokemonInfoWin.pack();
-      pokemonInfoWin.setVisible(true);
-      pokemonInfoWin.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-      pokemonInfoWin.setResizable(false);
-      
+      //if the list is empty, do nothing
+      if (pokemonToShow == null) {
+        
+      }else{
+        pokemonInfoWin = new PokemonInfoGUI(pokemonToShow);
+        pokemonInfoWin.setMinimumSize(new Dimension(500, 300));
+        pokemonInfoWin.pack();
+        pokemonInfoWin.setVisible(true);
+        pokemonInfoWin.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        pokemonInfoWin.setResizable(false);
+        pokemonInfoWin.setBounds(400, 200, 0, 0);
+      }
     }
   }
 }

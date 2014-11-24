@@ -108,8 +108,6 @@ public class Simulator {
       }
       while (in.hasNextLine()) {
         try {
-          
-          
           String line = in.nextLine();
           lineScanner = new Scanner(line);
           

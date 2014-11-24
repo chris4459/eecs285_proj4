@@ -10,6 +10,13 @@ import factory.ImagePathFactory;
 import main.GameSimulatorGUI;
 import simulate.Simulator;
 
+
+/*
+ * This class is for when an element in theJlist is single clicked.
+ * It should make the corresponding image change accordingly to the element.
+ * When the list is empty, should display the default image.
+ * Else display the corresponding pokemon image
+ */
 public class ListSelectListener implements ListSelectionListener{
   private static String imagePath;
   @Override
@@ -19,11 +26,10 @@ public class ListSelectListener implements ListSelectionListener{
     }
     JList<String> theList = (JList<String>)e.getSource();
     if (theList.isSelectionEmpty()) {
-      System.out.println("Empty");
+      
     }
     else{
       int index = theList.getSelectedIndex();
-      System.out.println(Simulator.towerAtIndex(index).getName());
       setImagePath(Simulator.towerAtIndex(index).getName());
       GameSimulatorGUI.pictureLabel.setIcon(createImageIcon(imagePath));
     }

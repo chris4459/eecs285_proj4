@@ -62,9 +62,8 @@ public class GameSimulatorGUI extends JFrame{
   public static JLabel pictureLabel;
   
   private static Cursor cursor;
-  
-  
-  
+
+  //Constructor
   public GameSimulatorGUI() {
     super("Pokemon Tower Defense");
     this.setLayout(new BorderLayout());
@@ -116,8 +115,6 @@ public class GameSimulatorGUI extends JFrame{
     gameNorthPanel.add(roundLabel);
     gameNorthPanel.add(roundTextField);
     
-    
-    
     //Game image
     setImagePath("Route 1");
     backgroundLabel = new JLabel(createImageIcon(imagePath));
@@ -167,7 +164,6 @@ public class GameSimulatorGUI extends JFrame{
     infoPanel.add(moneyLabel);
     infoPanel.add(moneyTextField);
     
-    
     //list
     towerListPanel = new JPanel();
     
@@ -200,10 +196,6 @@ public class GameSimulatorGUI extends JFrame{
 //    controlPanel.add(Box.createRigidArea(new Dimension(0, 0)));
     controlPanel.add(towerSplitPane);
     
-    
-    
-    
-    
     /*============================ Main Screen =============================*/
     /*======================================================================*/
     
@@ -211,63 +203,133 @@ public class GameSimulatorGUI extends JFrame{
     this.add("East", controlPanel);
   }
 
+/*===========================================================================*/
+/*=========================== Additional Functions ==========================*/  
+/*===========================================================================*/  
 
+  /**
+   * For the file menu in menu bar
+   *    -Start New Game-
+   * @return JMenuItem startNewGameItem
+   */
   public static JMenuItem getStartNewGameItem() {
     return startNewGameItem;
   }
   
+  /**
+   * For the file menu in menu bar
+   *    -Save State-
+   * @return JMenuItem saveStateItem
+   */
   public static JMenuItem getSaveStateItem() {
     return saveStateItem;
   }
   
+  /**
+   * For the file menu in menu bar
+   *    -Load State-
+   * @return JMenuItem loadStateItem
+   */
   public static JMenuItem getLoadStateItem() {
     return loadStateItem;
   }
   
+  /**
+   * For the file menu in menu bar
+   *    -Exit Game-
+   * @return
+   */
   public static JMenuItem getExitGameItem() {
     return exitGameItem;
   }
   
+  /**
+   * Needed when loading a state
+   *    Sets round
+   * @param round
+   */
   public static void setRound(int round){
     roundTextField.setText(Integer.toString(round));
   }
   
+  /**
+   * Needed when saving a state
+   *    Gets round in int
+   * @return 
+   */
   public static int getRound(){
     return Integer.parseInt(roundTextField.getText());
   }
   
+  /**
+   * Needed when loading a state
+   * @param level
+   */
   public static void setLevel(int level){
     levelTextField.setText(Integer.toString(level));
   }
   
+  /**
+   * Needed when saving a state
+   * @return
+   */
   public static int getLevel(){
     return Integer.parseInt(levelTextField.getText());
   }
   
+  /**
+   * Needed when loading a state
+   * @param lives
+   */
   public static void setLives(int lives){
     livesTextField.setText(Integer.toString(lives));
   }
   
+  /**
+   * Needed when saving a state
+   * @return
+   */
   public static int getLives(){
     return Integer.parseInt(livesTextField.getText());
   }
   
+  /**
+   * Needed when loading a state
+   * @param score
+   */
   public static void setScore(int score){
     scoreTextField.setText(Integer.toString(score));
   }
   
+  /**
+   * Needed when saving a state
+   * @return
+   */
   public static int getScore(){
     return Integer.parseInt(scoreTextField.getText());
   }
   
+  /**
+   * Needed when loading a state
+   * @param money
+   */
   public static void setMoney(int money){
     moneyTextField.setText(Integer.toString(money));
   }
   
+  /**
+   * Needed when saving a state
+   * @return
+   */
   public static int getMoney(){
     return Integer.parseInt(moneyTextField.getText());
   }
   
+  
+  /**
+   * Finds the image from str and sets the imagePath
+   * @param str
+   */
   private void setImagePath(String str){
     try {
       imagePath = ImagePathFactory.createImagePath(str);
@@ -276,9 +338,12 @@ public class GameSimulatorGUI extends JFrame{
     }
   }
   
-  
+  /**
+   * From the imagePath, returns the imageIcon
+   * @param path
+   * @return
+   */
   private ImageIcon createImageIcon(String path) {
-//    System.out.println(path);
     return new ImageIcon(getClass().getClassLoader().getResource(path));
   }
   
