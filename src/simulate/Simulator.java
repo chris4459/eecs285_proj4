@@ -39,6 +39,16 @@ public class Simulator {
   // ---------------------------------------------------------------------------
   
   /**
+   * Removes all the Pokemons from the towerVector (used when loading state)
+   */
+  public static void removeAllTowers(){
+    towerVector.clear();
+  }
+  
+  
+  // ---------------------------------------------------------------------------
+  
+  /**
    * @return An array of tower pokemons from the towerVector.
    */
   public static Vector<Pokemon> getTowerVector(){

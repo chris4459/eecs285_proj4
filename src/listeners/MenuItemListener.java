@@ -51,15 +51,18 @@ public class MenuItemListener implements ActionListener{
       
       if (chooserReturn == JFileChooser.APPROVE_OPTION) {
         chosenFile = chooser.getSelectedFile();
+        
+        //remove all towers 
+        Simulator.removeAllTowers();
+        GameSimulatorGUI.towerListModel.removeAllElements();
+        
         try {
           Simulator.loadState(chosenFile);
         } catch (Exception e2) {
           // TODO: handle exception
         }
         
-        GameSimulatorGUI.towerListModel.removeAllElements();
         Vector< Pokemon > pokemons = Simulator.getTowerVector();
-        System.out.println("vector size:" + pokemons.size());
         for (Pokemon pokemon : pokemons) {
           GameSimulatorGUI.towerListModel.addElement(pokemon.getName());
         }

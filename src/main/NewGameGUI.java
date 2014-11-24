@@ -100,6 +100,10 @@ public class NewGameGUI extends JFrame implements ActionListener{
             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (reply == JOptionPane.YES_OPTION) {
           if (bulbasaurButton.isSelected()) {
+            //remove all towers
+            Simulator.removeAllTowers();
+            GameSimulatorGUI.towerListModel.removeAllElements();
+            
             Pokemon bulbasaur = new Bulbasaur();
             GameSimulatorGUI.towerListModel.addElement(bulbasaur.getName());
             Simulator.add(bulbasaur);
@@ -108,6 +112,10 @@ public class NewGameGUI extends JFrame implements ActionListener{
                 bulbasaurButton.getActionCommand() + " is your starter");
           }
           else if (charmanderButton.isSelected()) {
+            //remove all towers
+            Simulator.removeAllTowers();
+            GameSimulatorGUI.towerListModel.removeAllElements();
+            
             Pokemon charmander = new Charmander();
             GameSimulatorGUI.towerListModel.addElement(charmander.getName());
             Simulator.add(charmander);
@@ -116,6 +124,10 @@ public class NewGameGUI extends JFrame implements ActionListener{
                 charmanderButton.getActionCommand() + " is your starter");
           }
           else if (squirtleButton.isSelected()) {
+            //remove all towers
+            Simulator.removeAllTowers();
+            GameSimulatorGUI.towerListModel.removeAllElements();
+            
             Pokemon squirtle = new Squirtle();
             GameSimulatorGUI.towerListModel.addElement(squirtle.getName());
             Simulator.add(squirtle);
@@ -124,6 +136,10 @@ public class NewGameGUI extends JFrame implements ActionListener{
                 squirtleButton.getActionCommand() + " is your starter");
           }
           else if (pikachuButton.isSelected()) {
+            //remove all towers
+            Simulator.removeAllTowers();
+            GameSimulatorGUI.towerListModel.removeAllElements();
+            
             Pokemon pikachu = new Pikachu();
             GameSimulatorGUI.towerListModel.addElement(pikachu.getName());
             Simulator.add(pikachu);
