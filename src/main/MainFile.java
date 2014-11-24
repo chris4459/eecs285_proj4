@@ -21,21 +21,21 @@ public class MainFile {
   
   public static void main(String[] args) {
     System.out.println("-----Starting Pokemon Tower Defense Game-----");
-    Pokemon rattata = new Rattata();
-    Pokemon bulbasaur = new Bulbasaur();
-    Pokemon charmander = new Charmander();
-    Pokemon pikachu = new Pikachu();
-    Pokemon pidgey = new Pidgey();
-    Pokemon caterpie = new Caterpie();
-    Pokemon squirtle = new Squirtle();
-    Simulator.add(rattata);
-    Simulator.add(bulbasaur);
-    Simulator.add(charmander);
-    Simulator.add(pikachu);
-    Simulator.add(pidgey);
-    Simulator.add(caterpie);
-    Simulator.add(squirtle);
-    
+//    Pokemon rattata = new Rattata();
+//    Pokemon bulbasaur = new Bulbasaur();
+//    Pokemon charmander = new Charmander();
+//    Pokemon pikachu = new Pikachu();
+//    Pokemon pidgey = new Pidgey();
+//    Pokemon caterpie = new Caterpie();
+//    Pokemon squirtle = new Squirtle();
+//    Simulator.add(rattata);
+//    Simulator.add(bulbasaur);
+//    Simulator.add(charmander);
+//    Simulator.add(pikachu);
+//    Simulator.add(pidgey);
+//    Simulator.add(caterpie);
+//    Simulator.add(squirtle);
+//    
     
     win = new GameSimulatorGUI();
     win.setVisible(true);

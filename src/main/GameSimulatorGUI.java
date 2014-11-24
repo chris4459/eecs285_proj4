@@ -56,15 +56,11 @@ public class GameSimulatorGUI extends JFrame{
   private static JTextField scoreTextField, moneyTextField, livesTextField;
   private static JLabel scoreLabel, moneyLabel, livesLabel;
   private static JPanel controlPanel, infoPanel, towerListPanel;
+  public static DefaultListModel<String> towerListModel;
   private static JList<String> towerList;
   private static JSplitPane towerSplitPane;
   public static JLabel pictureLabel;
   
-  
-  
-  private static JPanel center, towerPanel, towerPanelTop, towerPanelBottom;
-  private static JButton bulbTower, pikaTower, charTower, squirtTower;
-  private static ImageIcon bulbIcon, pikaIcon, charIcon, squirtIcon;
   private static Cursor cursor;
   
   
@@ -115,10 +111,11 @@ public class GameSimulatorGUI extends JFrame{
     levelLabel = new JLabel("Level:");
     levelTextField = new JTextField("0", 4);
     levelTextField.setEditable(false);
+    gameNorthPanel.add(levelLabel);
+    gameNorthPanel.add(levelTextField); 
     gameNorthPanel.add(roundLabel);
     gameNorthPanel.add(roundTextField);
-    gameNorthPanel.add(levelLabel);
-    gameNorthPanel.add(levelTextField);
+    
     
     
     //Game image
@@ -152,15 +149,15 @@ public class GameSimulatorGUI extends JFrame{
     infoPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
     
     livesLabel = new JLabel("Lives:");
-    livesTextField = new JTextField("??",4);
+    livesTextField = new JTextField("0",3);
     livesTextField.setEditable(false);
     
     scoreLabel = new JLabel("Score:");
-    scoreTextField = new JTextField("0",6);
+    scoreTextField = new JTextField("0",5);
     scoreTextField.setEditable(false);
     
-    moneyLabel = new JLabel("Money:");
-    moneyTextField = new JTextField("$0",6);
+    moneyLabel = new JLabel("Money($):");
+    moneyTextField = new JTextField("0",5);
     moneyTextField.setEditable(false);
     
     infoPanel.add(livesLabel);
@@ -174,7 +171,8 @@ public class GameSimulatorGUI extends JFrame{
     //list
     towerListPanel = new JPanel();
     
-    towerList = new JList<>(Simulator.getTowerVectorInString());
+    towerListModel = new DefaultListModel<>();
+    towerList = new JList<>(towerListModel);
     towerList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     towerList.setSelectedIndex(0);
     towerList.setVisibleRowCount(20);
@@ -185,7 +183,7 @@ public class GameSimulatorGUI extends JFrame{
     towerListPanel.add(towerListScrollPane);
     
     //picture for list
-    setImagePath("Bulbasaur");
+    setImagePath("Default");
     pictureLabel = new JLabel(createImageIcon(imagePath));
     
     
@@ -228,6 +226,46 @@ public class GameSimulatorGUI extends JFrame{
   
   public static JMenuItem getExitGameItem() {
     return exitGameItem;
+  }
+  
+  public static void setRound(int round){
+    roundTextField.setText(Integer.toString(round));
+  }
+  
+  public static int getRound(){
+    return Integer.parseInt(roundTextField.getText());
+  }
+  
+  public static void setLevel(int level){
+    levelTextField.setText(Integer.toString(level));
+  }
+  
+  public static int getLevel(){
+    return Integer.parseInt(levelTextField.getText());
+  }
+  
+  public static void setLives(int lives){
+    livesTextField.setText(Integer.toString(lives));
+  }
+  
+  public static int getLives(){
+    return Integer.parseInt(livesTextField.getText());
+  }
+  
+  public static void setScore(int score){
+    scoreTextField.setText(Integer.toString(score));
+  }
+  
+  public static int getScore(){
+    return Integer.parseInt(scoreTextField.getText());
+  }
+  
+  public static void setMoney(int money){
+    moneyTextField.setText(Integer.toString(money));
+  }
+  
+  public static int getMoney(){
+    return Integer.parseInt(moneyTextField.getText());
   }
   
   private void setImagePath(String str){

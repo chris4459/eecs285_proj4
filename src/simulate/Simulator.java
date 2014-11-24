@@ -10,6 +10,7 @@ import java.util.Vector;
 
 import javax.swing.JOptionPane;
 
+import main.GameSimulatorGUI;
 import main.MainFile;
 import factory.PokemonFactory;
 import pokemon.Pokemon;
@@ -23,11 +24,10 @@ import pokemon.Pokemon;
 
 public class Simulator {
   private static Vector< Pokemon > towerVector = new Vector<>();
-  private static int round = 0;
-  private static int level = 0;
+  private static int round, level, lives, score, money;
   private static Scanner in;
   private static Scanner lineScanner;
-
+  private static Pokemon pokemon;
   // ---------------------------------------------------------------------------
   /**
    * Adds a pokemon to the towerVector;
@@ -89,12 +89,17 @@ public class Simulator {
         try {
           level = in.nextInt(); 
           round = in.nextInt();
+          lives = in.nextInt();
+          score = in.nextInt();
+          money = in.nextInt();
         } catch (InputMismatchException e) {
           System.out.println("Cannot read this level as an integer ERROR");
         }
       }
       while (in.hasNextLine()) {
         try {
+          
+          
           String line = in.nextLine();
           lineScanner = new Scanner(line);
           
@@ -103,17 +108,22 @@ public class Simulator {
           int hp = Integer.parseInt(lineScanner.next());
           int attack = Integer.parseInt(lineScanner.next());
           int defense = Integer.parseInt(lineScanner.next());
-          int speed = Integer.parseInt(lineScanner.next()); 
           double attackRange = Double.parseDouble(lineScanner.next());
           
-          Pokemon pokemon = PokemonFactory.createPokemon(name);
+          pokemon = PokemonFactory.createPokemon(name);
           Simulator.add(pokemon);
+          
           
         } catch (Exception e) {
           // TODO: handle exception
         }
       }
       
+      GameSimulatorGUI.setLevel(level);
+      GameSimulatorGUI.setRound(round);
+      GameSimulatorGUI.setLives(lives);
+      GameSimulatorGUI.setScore(score);
+      GameSimulatorGUI.setMoney(money);
       
       
       
@@ -143,7 +153,14 @@ public class Simulator {
     try {
       BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
       
-      writer.write(String.format("%d %d", level, round));
+      level = GameSimulatorGUI.getLevel();
+      round = GameSimulatorGUI.getRound();
+      lives = GameSimulatorGUI.getLives();
+      score = GameSimulatorGUI.getScore();
+      money = GameSimulatorGUI.getMoney();
+          
+      writer.write(String.format("%d %d %d %d %d", 
+          level, round, lives, score, money));
       writer.newLine();
       
       

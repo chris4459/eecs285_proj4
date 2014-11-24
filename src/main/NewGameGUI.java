@@ -15,6 +15,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
+import pokemon.Bulbasaur;
+import pokemon.Charmander;
+import pokemon.Pikachu;
+import pokemon.Pokemon;
+import pokemon.Squirtle;
+import simulate.Simulator;
 import exceptions.ImagePathException;
 import factory.ImagePathFactory;
 
@@ -94,20 +100,36 @@ public class NewGameGUI extends JFrame implements ActionListener{
             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if (reply == JOptionPane.YES_OPTION) {
           if (bulbasaurButton.isSelected()) {
-            System.out.println(bulbasaurButton.getActionCommand() + 
-                " is your starter");
+            Pokemon bulbasaur = new Bulbasaur();
+            GameSimulatorGUI.towerListModel.addElement(bulbasaur.getName());
+            Simulator.add(bulbasaur);
+            
+            JOptionPane.showMessageDialog(null, 
+                bulbasaurButton.getActionCommand() + " is your starter");
           }
           else if (charmanderButton.isSelected()) {
-            System.out.println(charmanderButton.getActionCommand() + 
-                " is your starter");
+            Pokemon charmander = new Charmander();
+            GameSimulatorGUI.towerListModel.addElement(charmander.getName());
+            Simulator.add(charmander);
+            
+            JOptionPane.showMessageDialog(null, 
+                charmanderButton.getActionCommand() + " is your starter");
           }
           else if (squirtleButton.isSelected()) {
-            System.out.println(squirtleButton.getActionCommand() + 
-                " is your starter");
+            Pokemon squirtle = new Squirtle();
+            GameSimulatorGUI.towerListModel.addElement(squirtle.getName());
+            Simulator.add(squirtle);
+            
+            JOptionPane.showMessageDialog(null, 
+                squirtleButton.getActionCommand() + " is your starter");
           }
           else if (pikachuButton.isSelected()) {
-            System.out.println(pikachuButton.getActionCommand() + 
-                " is your starter");
+            Pokemon pikachu = new Pikachu();
+            GameSimulatorGUI.towerListModel.addElement(pikachu.getName());
+            Simulator.add(pikachu);
+            
+            JOptionPane.showMessageDialog(null, 
+                pikachuButton.getActionCommand() + " is your starter");
           }
         }
         dispose();

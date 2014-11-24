@@ -1,7 +1,6 @@
 package listeners;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -24,7 +23,7 @@ public class ListSelectListener implements ListSelectionListener{
     }
     else{
       int index = theList.getSelectedIndex();
-//      System.out.println(Simulator.towerAtIndex(index).getName());
+      System.out.println(Simulator.towerAtIndex(index).getName());
       setImagePath(Simulator.towerAtIndex(index).getName());
       GameSimulatorGUI.pictureLabel.setIcon(createImageIcon(imagePath));
     }

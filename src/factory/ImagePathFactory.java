@@ -50,6 +50,8 @@ public class ImagePathFactory
         return "images/geodude.png";
       case "Route 1":
         return "images/route1.png";
+      case "Default":
+        return "images/default.png";
       default:
         throw new ImagePathException();
     }

@@ -5,9 +5,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.Vector;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 
+import pokemon.Pokemon;
 import simulate.Simulator;
 import main.GameSimulatorGUI;
 import main.MainFile;
@@ -48,6 +51,18 @@ public class MenuItemListener implements ActionListener{
       
       if (chooserReturn == JFileChooser.APPROVE_OPTION) {
         chosenFile = chooser.getSelectedFile();
+        try {
+          Simulator.loadState(chosenFile);
+        } catch (Exception e2) {
+          // TODO: handle exception
+        }
+        
+        GameSimulatorGUI.towerListModel.removeAllElements();
+        Vector< Pokemon > pokemons = Simulator.getTowerVector();
+        System.out.println("vector size:" + pokemons.size());
+        for (Pokemon pokemon : pokemons) {
+          GameSimulatorGUI.towerListModel.addElement(pokemon.getName());
+        }
         
       }
       
